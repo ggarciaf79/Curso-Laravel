@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaPermisoRol extends Migration
+class CrearTablaMenuRol extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CrearTablaPermisoRol extends Migration
      */
     public function up()
     {
-        Schema::create('permiso_rol', function (Blueprint $table) {
+        Schema::create('menu_rol', function (Blueprint $table) {
             $table->unsignedInteger('rol_id');
-            $table->foreign('rol_id', 'fk_permisorol_rol')->references('id')->on('rol')->ondelete('restrict')->onupdate('restrict');
-            $table->unsignedInteger('permiso_id');
-            $table->foreign('permiso_id', 'fk_permisorol_permiso')->references('id')->on('permiso')->ondelete('restrict')->onupdate('restrict');
+            $table->foreign('rol_id', 'fk_menurol_rol')->references('id')->on('rol')->ondelete('restrict')->onupdate('restrict');
+            $table->unsignedInteger('menu_id');
+            $table->foreign('menu_id', 'fk_menurol_menu')->references('id')->on('menu')->ondelete('restrict')->onupdate('restrict');
             $table->charset = 'utf8mb4';
             $table->collation= 'utf8mb4_spanish_ci';
         });
@@ -30,6 +30,6 @@ class CrearTablaPermisoRol extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permiso_rol');
+        Schema::dropIfExists('menu_rol');
     }
 }
